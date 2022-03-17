@@ -1,39 +1,32 @@
-extends Area2D
+extends KinematicBody2D
 
-export var speed = 100;
-export var moveDist = 100;
+var velocity = Vector2()
+var direction = -1
 
-onready var startX = position.x
-onready var targetX = position.x + moveDist
+func _ready():
+	pass
 
-func _physics_process(delta):
 
-	position.x = move_to(position.x, targetX, speed * delta)
+func _physics_process(_delta):
+	velocity.y += 20
 	
-	if position.x == targetX:
-		if targetX == startX:
-			targetX = position.x  + moveDist
-		else:
-			targetX = startX
+	velocity.x = 100*direction
+	
+	move_and_slide(velocity)
+	
+	if direction == -1:
+		$EnemySprite.flip_h = true
+	elif direction == 1:
+		$EnemySprite.flip_h = false
 
-func move_to (current, to, step):
-	
-	var new = current
-	
-	if new < to:
-		new += step
-		
-		if new > to:
-			new = to
+
+func _on_Timer_timeout():
+	if direction == -1:
+		direction = 1
 	else:
-		new -= step
-		
-		if new < to:
-			new = to
-			
-	return new
+		direction = -1
 
-func _on_Enemy_body_entered(body):
-	
-	if body.name == "Player": 
-		body.die()
+
+func _on_Area2D_body_entered(body):
+	if body.get_name() == "Player":
+		get_tree().change_scene("res://Levels/Level1.tscn")
