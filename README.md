@@ -1,23 +1,21 @@
 
-# Exercise-04c-Levels
+# Project 04 2d platformer
 
-Exercise for MSCH-C220
 
-The third exercise for the 2D Platformer project, exploring the TileMap node.
+the 4th project for intro to game technology
 
 
 ## Implementation
 
 Built using Godot 3.4.2
 
-The player sprite adapted from [MV Platformer Male](https://opengameart.org/content/mv-platformer-male-32x64) by MoikMellah. CC0 Licensed.
 
-The terrain spritemap is from the [Abstract Platformer package](https://kenney.nl/assets/abstract-platformer) available at Kenney.nl.
 
 
 ## References
 
-None
+https://opengameart.org/content/outside-tileset
+https://opengameart.org/content/a-platformer-in-the-forest#
 
 
 ## Future Development
